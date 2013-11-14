@@ -12,6 +12,7 @@ mac下测了下, tab自动补全的有异常,之后修复
 
 * 安装
   1. shell .bashrc 配置添加如下. /path/to/thor为thor文件路径
+
    ```shell
     if [ -x /path/to/thor ]; then
       . /path/to/thor
@@ -21,13 +22,23 @@ mac下测了下, tab自动补全的有异常,之后修复
       alias td='thor -r'
     fi
    ```
-  2. chmod 755 /path/to/thor 确认可执行
-  3. source ~/.bashrc
+  2. 添加可执行权限
+  
+   ```shell
+    chmod 755 /path/to/thor 
+   ```  
+  3. 重新加载bashrc
+   
+   ```shell
+    source ~/.bashrc
+   ```
 
 * 使用方法
+   ```shell
  1. thor -l          显示标记列表
  2. thor -a pin_name 添加标记
  3. thor -r pin_name 删除标记
  4. tl               thor -l 缩写
  5. td pin_name      thor -r pin_name 缩写
  6. ta pin_name      thor -a pin_name 缩写
+  ```
