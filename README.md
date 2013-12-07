@@ -11,11 +11,12 @@ centos下测试通过, 其他linux发行版未测试
 mac下测了下, tab自动补全的有异常,之后修复[已修复] 
 
 
-* 安装
+
+* 安装 注意替换/path/to/thor 为本地thor文件路径
   1. 编辑bash配置 ~/.bashrc（mac os为 ~/.bash_profile, 没有则touch ~/.bash_profile） 配置添加如下
 
    ```shell
-    if [ -x /path/to/thor ]; then
+    if [ -x /path/to/thor ]; then #. /path/to/thor为thor文件路径
       . /path/to/thor #. /path/to/thor为thor文件路径
       alias t='thor'
       alias tl='thor -l'
