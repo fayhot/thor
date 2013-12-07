@@ -12,7 +12,7 @@ mac下测了下, tab自动补全的有异常,之后修复[已修复]
 
 
 * 安装
-  1. 编辑bash配置 ~/.bashrc（mac os为 ~/.bash_profile配置） 配置添加如下
+  1. 编辑bash配置 ~/.bashrc（mac os为 ~/.bash_profile, 没有则touch ~/.bash_profile） 配置添加如下
 
    ```shell
     if [ -x /path/to/thor ]; then
