@@ -8,15 +8,15 @@ linux cd wrapper 之 飞雷神
 运维以及平台的小伙伴们教了些招,pushd alias,环境变量等等,都还是不够快捷.  
 根据需求适用shell封装了下 cd 命令, 基本达到了自由跳转的目的.  
 centos下测试通过, 其他linux发行版未测试  
-mac下测了下, tab自动补全的有异常,之后修复  
+mac下测了下, tab自动补全的有异常,之后修复[已修复] 
 
 
 * 安装
-  1. shell .bashrc 配置添加如下. /path/to/thor为thor文件路径
+  1. 编辑bash配置 ~/.bashrc（mac os为 ~/.bash_profile配置） 配置添加如下
 
    ```shell
     if [ -x /path/to/thor ]; then
-      . /path/to/thor
+      . /path/to/thor #. /path/to/thor为thor文件路径
       alias t='thor'
       alias tl='thor -l'
       alias ta='thor -a'
@@ -31,7 +31,7 @@ mac下测了下, tab自动补全的有异常,之后修复
   3. 重新加载bashrc
    
    ```shell
-    source ~/.bashrc
+    source ~/.bashrc #mac os 为 source ~/.bash_profile
    ```
 
 * 使用方法
