@@ -5,8 +5,9 @@ export THORDEFAULT=fayhot
 #@doc http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 function _completepins() {
   local cur=${COMP_WORDS[COMP_CWORD]}
-  #local pinlist=$(ls $THORPATH -l | grep ^l | awk '{print $9}')
-  local pinlist=$(find $THORPATH -type l -printf "%f ")
+  #local pinlist=$(find $THORPATH -type l -printf "%f ") #mac 不支持-printf
+  #local pinlist=$(ls $THORPATH -l | grep ^l | awk '{print $9}') #mac 下 opt参数不允许后置
+  local pinlist=$(ls -l $THORPATH | grep ^l | awk '{print $9}')
   if [[ $COMP_CWORD -eq 1 ]]; then
     COMPREPLY=($(compgen -W '${pinlist}' -- "$cur"))
   fi;
@@ -25,7 +26,7 @@ function thor () {
   _init
   while [ $# -ne 0 ]; do
     case $1 in
-      -l)ls -l ~/.f/ | grep ^l |  awk '{print $9,"-->",$11}'
+      -l)ls -l $THORPATH | grep ^l |  awk '{print $9,"-->",$11}'
          shift
          break
          ;;
@@ -53,7 +54,7 @@ function thor () {
          if [ -z $cmd ]; then
            cmd=$THORDEFAULT
          fi
-         target=`ls -l ~/.f | awk '{print $9, $0}' | grep ^"$cmd" | awk '{print $12}'`
+         target=`ls -l $THORPATH | awk '{print $9, $0}' | grep ^"$cmd" | awk '{print $12}'`
          if [ -z $target ]; then
            echo "not match pin: $cmd"
          else
@@ -66,4 +67,4 @@ function thor () {
   done
 }
 
-complete -F _completepins thor t
+complete -F _completepins thor t td
