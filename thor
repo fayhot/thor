@@ -54,7 +54,7 @@ function thor () {
          if [ -z $cmd ]; then
            cmd=$THORDEFAULT
          fi
-         target=`ls -l $THORPATH | awk '{print $9, $0}' | grep ^"$cmd" | awk '{print $12}'`
+         target=`ls -l -color=none $THORPATH | awk '{if ($9=="$cmd") print $11}'`
          if [ -z $target ]; then
            echo "not match pin: $cmd"
          else
