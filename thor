@@ -54,7 +54,8 @@ function thor () {
          if [ -z $cmd ]; then
            cmd=$THORDEFAULT
          fi
-         target=`ls -l -color=none $THORPATH | awk '{if ($9=="$cmd") print $11}'`
+         # target=`ls -l -color=none $THORPATH | awk '{if ($9=="$cmd") print $11}'`
+         target=`ls -l --color=never $THORPATH | awk '{if ($9 == "'$cmd'") {print $11}}'` # 修复1. 修复ubuntu 18.04 下 ls --color 参数错误的bug. 2. 修复ubuntu 18.04 下 awk 引用外部变量错误的bug
          if [ -z $target ]; then
            echo "not match pin: $cmd"
          else
